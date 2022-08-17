@@ -18,14 +18,9 @@ public class StreamerService {
     @Autowired
     private StreamerRepository streamerRepository;
 
-    @PersistenceContext
-    public EntityManager entityManager;
-
-
     public Iterable<Streamer> getStreamers(String token) {
         Account user = accountService.getActualUser(token);
-        Iterable<Streamer> test = streamerRepository.getByUser(user.getId());
-        return test;
+       return streamerRepository.getByUser(user.getId());
     }
 
 }
